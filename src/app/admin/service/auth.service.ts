@@ -1,12 +1,14 @@
 import { Injectable } from '@angular/core';
 import { reject } from 'q';
 import { Subject } from 'rxjs/Subject';
+import { User } from '../../common/model';
 
 
 @Injectable()
 export class AuthService {
 
-  public auth = true;
+  public auth = false;
+  private user: User;
 
   // Observable string sources
   private emitChangeSource = new Subject<any>();
@@ -30,10 +32,15 @@ export class AuthService {
        if(username == 'admin' && passord == 'admin')
        {
         console.info("OK")
-        document.cookie = "auth=1";
+        
         this.auth = true;
-        resolve({});
-        this.emitChange(true);
+
+        this.user = new User();
+        this.user.username = "Admin";
+        this.user.roles = ["user-list", "user-detail"];
+
+        resolve(this.user);
+        this.emitChange(this.user);
        }
        else
        {
@@ -42,6 +49,10 @@ export class AuthService {
        }
 
     })
+  }
+
+  getUser() {
+    return this.user;
   }
 
   logout() {

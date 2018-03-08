@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../../service/auth.service';
 import { Router } from '@angular/router';
+import { User } from '../../../common/model';
 
 @Component({
   selector: 'app-login',
@@ -21,7 +22,8 @@ export class LoginComponent implements OnInit {
     console.info("controller login");
     console.info(this.username, this.password)
     
-    this.authService.login(this.username, this.password).then(() => {
+    this.authService.login(this.username, this.password).then((user: User) => {
+      console.info(user);
       this.router.navigate(['admin/']);
     }, (error) => {
       alert(error)
