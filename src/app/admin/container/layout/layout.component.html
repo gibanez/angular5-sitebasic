@@ -1,6 +1,6 @@
+<app-header *ngIf="isAuth"></app-header>
 
 <div *ngIf="isAuth">
-<button routerLink="/admin">Dashboard</button>
-<button (click)="logout()">Logout</button>
+
 </div>
 <router-outlet></router-outlet>

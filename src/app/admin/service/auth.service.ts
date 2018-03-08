@@ -6,7 +6,7 @@ import { Subject } from 'rxjs/Subject';
 @Injectable()
 export class AuthService {
 
-  public auth = false;
+  public auth = true;
 
   // Observable string sources
   private emitChangeSource = new Subject<any>();
@@ -30,6 +30,7 @@ export class AuthService {
        if(username == 'admin' && passord == 'admin')
        {
         console.info("OK")
+        document.cookie = "auth=1";
         this.auth = true;
         resolve({});
         this.emitChange(true);

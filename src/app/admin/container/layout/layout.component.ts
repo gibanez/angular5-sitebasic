@@ -13,7 +13,7 @@ export class LayoutComponent implements OnInit {
   constructor(private authService: AuthService) { }
 
   ngOnInit() {
-    
+    this.isAuth = this.authService.isAuth();
     this.authService.changeEmitted$.subscribe(() => {
       this.isAuth = this.authService.isAuth();
     });
