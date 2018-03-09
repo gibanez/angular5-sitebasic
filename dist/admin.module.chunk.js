@@ -8835,7 +8835,6 @@ var LoginComponent = /** @class */ (function () {
         console.info("controller login");
         console.info(this.username, this.password);
         this.authService.login(this.username, this.password).then(function (user) {
-            console.info(user);
             _this.router.navigate(['admin/']);
         }, function (error) {
             alert(error);

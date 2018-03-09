@@ -23,7 +23,7 @@ export class LoginComponent implements OnInit {
     console.info(this.username, this.password)
     
     this.authService.login(this.username, this.password).then((user: User) => {
-      console.info(user);
+      
       this.router.navigate(['admin/']);
     }, (error) => {
       alert(error)
